@@ -254,11 +254,13 @@ class TransmuxingController {
             if (mds.duration != undefined && !isNaN(mds.duration)) {
                 this._demuxer.overridedDuration = mds.duration;
             }
-            if (typeof mds.hasAudio === 'boolean') {
-                this._demuxer.overridedHasAudio = mds.hasAudio;
+            if (typeof probeData.hasAudio === 'boolean') {
+                // this._demuxer.overridedHasAudio = mds.hasAudio;
+                this._demuxer.overridedHasAudio = probeData.hasAudioTrack;
             }
-            if (typeof mds.hasVideo === 'boolean') {
-                this._demuxer.overridedHasVideo = mds.hasVideo;
+            if (typeof probeData.hasVideo === 'boolean') {
+                // this._demuxer.overridedHasVideo = mds.hasVideo;
+                this._demuxer.overridedHasAudio = probeData.hasVideoTrack;
             }
 
             this._demuxer.timestampBase = mds.segments[this._currentSegmentIndex].timestampBase;
